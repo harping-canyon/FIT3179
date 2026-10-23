@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Countries, themes, playing times and player counts across 871 board games.">
+    <title>The world on the table | Laurence Downie</title>
+    <link rel="preload" href="./assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="./src/styles.css?v=25">
+    <script defer src="https://cdn.jsdelivr.net/npm/vega@6.2.0"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/vega-lite@6.4.3"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/vega-embed@7.1.0"></script>
+    <script type="module" src="./src/main.js?v=32"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to the story</a>
+
+    <main id="main">
+      <section class="hero wrap" aria-labelledby="page-title">
+        <div class="hero__header">
+          <p class="hero__topic">Board games</p>
+          <time class="hero__date" datetime="2026-10-22">22 October 2026</time>
+        </div>
+        <h1 id="page-title">The world on the table<span class="title-stop">.</span></h1>
+        <p class="hero__byline">By Laurence Downie, 32477848</p>
+        <p class="hero__lead">The same country can feature in very different board games. Among 871 games linked to real places, military themes are associated with longer playing times and more complex rules.</p>
+        <nav class="story-nav" aria-label="Story chapters"><a href="#places">Places</a><a href="#play">Ways to play</a><a href="#demands">Time and complexity</a><a href="#players">Player counts</a></nav>
+      </section>
+
+      <section class="story-section wrap" id="places" aria-labelledby="section-title">
+        <div class="section-intro">
+          <p class="eyebrow">Places</p>
+          <h2 id="section-title">The US leads the country counts; Europe has the most cities.</h2>
+          <p>BoardGameGeek, a community-maintained game catalogue, links games to countries and cities through tags. These can describe settings and other associations, rather than where games are made. A game can have several tags.</p>
+        </div>
+        <div id="hero-chart"></div>
+        <details class="country-details">
+          <summary>All 98 places and example games</summary>
+          <p id="coverage-note"></p>
+          <p id="table-status">“Table only” marks places missing from the map’s boundary file.</p>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="Country counts and examples">
+            <table id="country-table"><caption>Documented game–country associations</caption><thead><tr><th scope="col">Place</th><th scope="col">Games</th><th scope="col">Map coverage</th><th scope="col">Examples</th></tr></thead><tbody></tbody></table>
+          </div>
+        </details>
+        <div id="city-chart"></div>
+        <details class="country-details">
+          <summary>Find a city and its example games</summary>
+          <label for="city-search">City or country</label>
+          <input id="city-search" type="search" placeholder="For example, London" autocomplete="off">
+          <p id="city-status" aria-live="polite"></p>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="City locations and examples">
+            <table id="city-table"><caption>Matched city tags</caption><thead><tr><th scope="col">City</th><th scope="col">Games</th><th scope="col">Country</th><th scope="col">Examples</th></tr></thead><tbody></tbody></table>
+          </div>
+        </details>
+      </section>
+
+      <section class="story-section wrap chapter" id="play" aria-labelledby="play-title">
+        <div class="section-intro">
+          <p class="eyebrow">Ways to play</p>
+          <h2 id="play-title">Military themes are more common in games tagged Germany than Japan.</h2>
+          <p>The country totals conceal different kinds of games. BoardGameGeek groups games about military conflict as “Wargames”.</p>
+        </div>
+        <div id="share-chart"></div>
+        <div id="rank-chart"></div>
+        <div id="category-chart"></div>
+        <p class="section-bridge">A theme describes what a game is about. Its mechanics describe what you do: manage cards, roll dice or collect sets.</p>
+        <div id="mechanics-chart"></div>
+        <div id="network-chart"></div>
+      </section>
+      <section class="story-section wrap chapter" id="demands" aria-labelledby="demands-title">
+        <div class="section-intro">
+          <p class="eyebrow">Time and complexity</p>
+          <h2 id="demands-title">Wargames tend to take longer and have more complex rules.</h2>
+          <p>Those themes also correspond to different playing demands. In this sample, the median listed time is two hours for Wargames and one hour for other games.</p>
+        </div>
+        <div id="complexity-chart"></div>
+        <div id="time-chart"></div>
+        <div id="ratings-chart"></div>
+      </section>
+      <section class="story-section wrap chapter" id="players" aria-labelledby="table-title">
+        <div class="section-intro">
+          <p class="eyebrow">Player counts</p>
+          <h2 id="table-title">Longer games do not always seat more players.</h2>
+        </div>
+        <div id="players-chart"></div>
+        <div id="ranges-chart"></div>
+      </section>
+    </main>
+
+    <footer id="method" class="site-footer wrap">
+      <h2 class="footer-heading">Sources</h2>
+      <p><a href="https://www.kaggle.com/datasets/sylvainballerini/bgg-data-full">BoardGameGeek, extracted by Sylvain Ballerini</a>; <a href="https://www.geonames.org/export/">GeoNames</a>; <a href="https://www.naturalearthdata.com/about/terms-of-use/">Natural Earth</a>. <a href="./data/metadata.json">Data provenance</a>.</p>
+      <p>September 2026 extract: 871 games released in 1900–2024, each with at least 1,000 ratings, 30 complexity votes and a country or city tag.</p>
+      <p>The city map excludes nine ambiguous tags and follows GeoNames’ regional classification. Country and city counts overlap. Playing times cover 854 games and exclude estimates above six hours; all 17 missing times are Wargames. Editions may differ.</p>
+      <h3 class="chart-files-heading">Chart definitions (JSON)</h3>
+      <ul id="chart-files" class="chart-files"></ul>
+    </footer>
+  </body>
+</html>

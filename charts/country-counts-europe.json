@@ -1,0 +1,165 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Detail of western and central Europe. Identical circle-area scale to world view. Positions remain at Natural Earth label points; no displacement or aggregation.",
+  "width": "container",
+  "height": 350,
+  "padding": 0,
+  "background": "transparent",
+  "projection": {
+    "type": "mercator",
+    "fit": {
+      "type": "MultiPoint",
+      "coordinates": [
+        [
+          -13,
+          35
+        ],
+        [
+          30,
+          61
+        ]
+      ]
+    }
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "./data/world.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e8eae6",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.55,
+        "clip": true
+      }
+    },
+    {
+      "data": {
+        "url": "./data/countries.json"
+      },
+      "transform": [
+        {
+          "filter": "datum.longitude >= -13 && datum.longitude <= 30 && datum.latitude >= 35 && datum.latitude <= 61"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "fill": "#176c7a",
+        "fillOpacity": 0.77,
+        "stroke": "#ffffff",
+        "strokeWidth": 1.2,
+        "clip": true
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "game_count",
+          "type": "quantitative",
+          "scale": {
+            "type": "linear",
+            "domain": [
+              0,
+              128
+            ],
+            "range": [
+              0,
+              600
+            ]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "country",
+            "type": "nominal",
+            "title": "Place"
+          },
+          {
+            "field": "game_count",
+            "type": "quantitative",
+            "title": "Tagged games"
+          },
+          {
+            "field": "example_titles",
+            "type": "nominal",
+            "title": "Examples"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "./data/countries.json"
+      },
+      "transform": [
+        {
+          "filter": "indexof(['GB','FR','DE','IT'], datum.iso) >= 0"
+        },
+        {
+          "calculate": "(datum.iso === 'GB' ? 'UK' : datum.country) + ', ' + datum.game_count",
+          "as": "label"
+        },
+        {
+          "calculate": "datum.iso === 'DE' ? -24 : -20",
+          "as": "label_dy"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "dy": {
+          "expr": "datum.label_dy"
+        },
+        "fontSize": 11,
+        "fontWeight": 700,
+        "fill": "#163c46",
+        "stroke": "#fbfbf8",
+        "strokeWidth": 2,
+        "clip": true,
+        "dx": {
+          "expr": "datum.iso === 'DE' ? 16 : 0"
+        },
+        "align": {
+          "expr": "datum.iso === 'DE' ? 'left' : 'center'"
+        }
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "legend": {
+      "labelFont": "Inter",
+      "titleFont": "Inter",
+      "labelColor": "#435158",
+      "titleColor": "#435158"
+    },
+    "font": "Inter"
+  }
+}

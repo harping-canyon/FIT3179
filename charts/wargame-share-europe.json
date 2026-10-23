@@ -1,0 +1,157 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Wargame share of tagged games within each country; only samples of at least 20 are coloured.",
+  "width": "container",
+  "height": 350,
+  "padding": 0,
+  "background": "transparent",
+  "projection": {
+    "type": "mercator",
+    "fit": {
+      "type": "MultiPoint",
+      "coordinates": [
+        [
+          -13,
+          35
+        ],
+        [
+          30,
+          61
+        ]
+      ]
+    }
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "./data/world.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.55,
+        "clip": true
+      },
+      "transform": [
+        {
+          "lookup": "properties.iso",
+          "from": {
+            "data": {
+              "url": "./data/countries.json"
+            },
+            "key": "iso",
+            "fields": [
+              "game_count",
+              "wargame_count",
+              "wargame_share",
+              "eligible_ratio"
+            ]
+          }
+        },
+        {
+          "calculate": "datum.eligible_ratio ? 'At least 20 tagged games' : 'Insufficient tagged games (fewer than 20 or none recorded)'",
+          "as": "coverage"
+        }
+      ],
+      "encoding": {
+        "color": {
+          "condition": {
+            "test": "datum.eligible_ratio === true",
+            "field": "wargame_share",
+            "type": "quantitative",
+            "scale": {
+              "domain": [
+                0,
+                1
+              ],
+              "scheme": "oranges"
+            },
+            "legend": {
+              "title": "Wargame share",
+              "format": ".0%",
+              "orient": "bottom",
+              "gradientLength": 180
+            }
+          },
+          "value": "#e8eae6"
+        },
+        "tooltip": [
+          {
+            "field": "properties.name",
+            "type": "nominal",
+            "title": "Country"
+          },
+          {
+            "field": "coverage",
+            "type": "nominal",
+            "title": "Coverage"
+          },
+          {
+            "field": "game_count",
+            "type": "quantitative",
+            "title": "Tagged games"
+          },
+          {
+            "field": "wargame_count",
+            "type": "quantitative",
+            "title": "Wargames"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "./data/countries.json"
+      },
+      "transform": [
+        {
+          "filter": "indexof(['DE','IT'], datum.iso) >= 0"
+        },
+        {
+          "calculate": "datum.country + ', ' + format(datum.wargame_share, '.0%')",
+          "as": "label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "dy": -12,
+        "fontSize": 11,
+        "fontWeight": 700,
+        "fill": "#653719",
+        "stroke": "#fbfbf8",
+        "strokeWidth": 2,
+        "clip": true
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "legend": {
+      "labelFont": "Inter",
+      "titleFont": "Inter",
+      "labelColor": "#435158",
+      "titleColor": "#435158"
+    },
+    "font": "Inter"
+  }
+}

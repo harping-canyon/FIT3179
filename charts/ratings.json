@@ -1,0 +1,156 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": "container",
+  "height": 400,
+  "background": "transparent",
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#526369",
+      "titleColor": "#526369",
+      "gridColor": "#edf0ee"
+    },
+    "font": "Inter"
+  },
+  "data": {
+    "url": "./data/games.json"
+  },
+  "encoding": {
+    "x": {
+      "field": "complexity",
+      "type": "quantitative",
+      "title": "Community-rated complexity (1\u20135)",
+      "scale": {
+        "domain": [
+          1,
+          5
+        ]
+      },
+      "axis": {
+        "tickCount": 7
+      }
+    },
+    "y": {
+      "field": "rating",
+      "type": "quantitative",
+      "title": "Average user rating (1\u201310)",
+      "scale": {
+        "domain": [
+          4,
+          10
+        ]
+      },
+      "axis": {
+        "tickCount": 6
+      }
+    },
+    "tooltip": [
+      {
+        "field": "title",
+        "type": "nominal",
+        "title": "Game"
+      },
+      {
+        "field": "complexity",
+        "type": "quantitative",
+        "format": ".2f",
+        "title": "Complexity (1\u20135)"
+      },
+      {
+        "field": "rating",
+        "type": "quantitative",
+        "format": ".2f",
+        "title": "User rating (1\u201310)"
+      },
+      {
+        "field": "rating_votes",
+        "type": "quantitative",
+        "title": "Rating votes",
+        "format": ","
+      }
+    ]
+  },
+  "params": [
+    {
+      "name": "gameFocus",
+      "value": 9209,
+      "bind": {
+        "input": "select",
+        "name": "Highlight an example: ",
+        "options": [
+          9209,
+          822,
+          183394,
+          2651,
+          193738,
+          12333
+        ],
+        "labels": [
+          "Ticket to Ride",
+          "Carcassonne",
+          "Viticulture Essential Edition",
+          "Power Grid",
+          "Great Western Trail",
+          "Twilight Struggle"
+        ]
+      }
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "circle",
+        "size": 20,
+        "color": "#176c7a",
+        "opacity": 0.28
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.id === gameFocus"
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "fill": "#176c7a",
+        "stroke": "#1f3035",
+        "strokeWidth": 2,
+        "size": 130
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.id === gameFocus"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "dy": -17,
+        "fontWeight": 700,
+        "stroke": "white",
+        "strokeWidth": 3,
+        "fill": "#1f3035",
+        "align": {
+          "expr": "datum.complexity > 3 ? 'right' : 'left'"
+        }
+      },
+      "encoding": {
+        "text": {
+          "field": "title",
+          "type": "nominal"
+        }
+      }
+    }
+  ]
+}

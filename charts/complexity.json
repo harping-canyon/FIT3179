@@ -1,0 +1,163 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": "container",
+  "background": "transparent",
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#526369",
+      "titleColor": "#526369",
+      "gridColor": "#edf0ee"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    },
+    "font": "Inter"
+  },
+  "height": 230,
+  "data": {
+    "url": "./data/complexity_summary.json"
+  },
+  "encoding": {
+    "y": {
+      "field": "group",
+      "type": "nominal",
+      "title": null
+    },
+    "x": {
+      "field": "whisker_low",
+      "type": "quantitative",
+      "title": "Community-rated complexity, 1 (light) to 5 (heavy)",
+      "scale": {
+        "domain": [
+          1,
+          5
+        ]
+      },
+      "axis": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    },
+    "tooltip": [
+      {
+        "field": "group",
+        "type": "nominal",
+        "title": "Game group"
+      },
+      {
+        "field": "n",
+        "type": "quantitative",
+        "title": "Games"
+      },
+      {
+        "field": "q1",
+        "type": "quantitative",
+        "title": "Lower quarter",
+        "format": ".2f"
+      },
+      {
+        "field": "median",
+        "type": "quantitative",
+        "format": ".2f",
+        "title": "Median"
+      },
+      {
+        "field": "q3",
+        "type": "quantitative",
+        "title": "Upper quarter",
+        "format": ".2f"
+      }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#526369"
+      },
+      "encoding": {
+        "x2": {
+          "field": "whisker_high"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "bar",
+        "size": 42
+      },
+      "encoding": {
+        "x": {
+          "field": "q1",
+          "type": "quantitative"
+        },
+        "x2": {
+          "field": "q3"
+        },
+        "color": {
+          "field": "group",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Wargame",
+              "Other games"
+            ],
+            "range": [
+              "#b65f26",
+              "#176c7a"
+            ]
+          },
+          "legend": null
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "tick",
+        "color": "white",
+        "thickness": 3,
+        "size": 42
+      },
+      "encoding": {
+        "x": {
+          "field": "median",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dy": -33,
+        "fontWeight": 700,
+        "color": "#1f3035"
+      },
+      "encoding": {
+        "x": {
+          "field": "median",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "median",
+          "type": "quantitative",
+          "format": ".2f"
+        }
+      }
+    }
+  ]
+}

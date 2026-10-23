@@ -1,0 +1,217 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": "container",
+  "height": 480,
+  "background": "transparent",
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#526369",
+      "titleColor": "#526369",
+      "gridColor": "#edf0ee"
+    },
+    "font": "Inter"
+  },
+  "data": {
+    "url": "./data/country_ranks.json"
+  },
+  "padding": {
+    "left": 5,
+    "right": 5,
+    "top": 30,
+    "bottom": 5
+  },
+  "transform": [
+    {
+      "calculate": "datum.group === 'Wargame' ? 0 : 1",
+      "as": "side"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "side",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          -0.7,
+          1.7
+        ]
+      },
+      "axis": {
+        "values": [
+          0,
+          1
+        ],
+        "labelExpr": "datum.value === 0 ? 'Wargames' : 'Other games'",
+        "title": null,
+        "grid": false,
+        "domain": false,
+        "ticks": false,
+        "orient": "top"
+      }
+    },
+    "y": {
+      "field": "rank",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          12.5,
+          0.5
+        ]
+      },
+      "axis": null
+    },
+    "tooltip": [
+      {
+        "field": "country",
+        "type": "nominal",
+        "title": "Country"
+      },
+      {
+        "field": "group",
+        "type": "nominal",
+        "title": "Game group"
+      },
+      {
+        "field": "rank",
+        "type": "quantitative",
+        "title": "Rank"
+      },
+      {
+        "field": "game_count",
+        "type": "quantitative",
+        "title": "Tagged games"
+      }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "point": true,
+        "strokeWidth": 1.7
+      },
+      "encoding": {
+        "detail": {
+          "field": "iso",
+          "type": "nominal"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.iso === 'JP'",
+            "value": "#176c7a"
+          },
+          "value": "#b5bfbb"
+        },
+        "order": {
+          "field": "side",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.side === 0"
+        },
+        {
+          "aggregate": [
+            {
+              "op": "values",
+              "as": "members"
+            }
+          ],
+          "groupby": [
+            "side",
+            "rank",
+            "game_count"
+          ]
+        },
+        {
+          "calculate": "join(pluck(datum.members, 'country'), ' / ') + ' (' + datum.game_count + ')'",
+          "as": "label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -9,
+        "fontSize": 11,
+        "color": "#1f3035"
+      },
+      "encoding": {
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        },
+        "tooltip": [
+          {
+            "field": "label",
+            "type": "nominal",
+            "title": "Countries"
+          },
+          {
+            "field": "rank",
+            "type": "quantitative"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.side === 1"
+        },
+        {
+          "aggregate": [
+            {
+              "op": "values",
+              "as": "members"
+            }
+          ],
+          "groupby": [
+            "side",
+            "rank",
+            "game_count"
+          ]
+        },
+        {
+          "calculate": "join(pluck(datum.members, 'country'), ' / ') + ' (' + datum.game_count + ')'",
+          "as": "label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 9,
+        "fontSize": 11,
+        "color": "#1f3035"
+      },
+      "encoding": {
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        },
+        "tooltip": [
+          {
+            "field": "label",
+            "type": "nominal",
+            "title": "Countries"
+          },
+          {
+            "field": "rank",
+            "type": "quantitative"
+          }
+        ]
+      }
+    }
+  ]
+}

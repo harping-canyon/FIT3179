@@ -1,0 +1,19 @@
+/.idea/
+/.venv/
+/node_modules/
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# Downloaded research inputs are much larger than the site needs.
+/research/validation-data/*
+!/research/validation-data/.gitignore
+
+# Generated assets and local preview output.
+/dist/
+/coverage/
+
+# Local planning, research inputs and review material.
+/docs/
+/research/
+/IMPLEMENTATION_PLAN.md

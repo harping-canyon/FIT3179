@@ -1,0 +1,404 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": "container",
+  "background": "transparent",
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#526369",
+      "titleColor": "#526369",
+      "gridColor": "#edf0ee"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    },
+    "font": "Inter"
+  },
+  "height": 350,
+  "params": [
+    {
+      "name": "profileGame",
+      "value": -1,
+      "bind": {
+        "input": "select",
+        "name": "Highlight game: ",
+        "options": [
+          -1,
+          9209,
+          822,
+          183394,
+          2651,
+          193738,
+          12333
+        ],
+        "labels": [
+          "Ticket to Ride and Twilight Struggle",
+          "Ticket to Ride",
+          "Carcassonne",
+          "Viticulture Essential Edition",
+          "Power Grid",
+          "Great Western Trail",
+          "Twilight Struggle"
+        ]
+      }
+    }
+  ],
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {
+            "order": 0,
+            "position": 0,
+            "end": 1
+          },
+          {
+            "order": 1,
+            "position": 0,
+            "end": 1
+          },
+          {
+            "order": 2,
+            "position": 0,
+            "end": 1
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#c7ceca"
+      },
+      "encoding": {
+        "y2": {
+          "field": "end"
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "./data/game_profiles.json"
+      },
+      "mark": {
+        "type": "line",
+        "point": true
+      },
+      "encoding": {
+        "detail": {
+          "field": "id"
+        },
+        "order": {
+          "field": "order"
+        },
+        "color": {
+          "value": "#aeb7b5"
+        },
+        "opacity": {
+          "value": 0.5
+        },
+        "strokeWidth": {
+          "value": 1.5
+        },
+        "tooltip": [
+          {
+            "field": "title",
+            "title": "Game"
+          },
+          {
+            "field": "axis",
+            "title": "Measure"
+          },
+          {
+            "field": "value",
+            "type": "quantitative",
+            "title": "Listed value",
+            "format": ".2~f"
+          },
+          {
+            "field": "minimum_players",
+            "type": "quantitative",
+            "title": "Minimum players"
+          }
+        ]
+      },
+      "transform": [
+        {
+          "filter": "!(profileGame == -1 ? datum.id == 9209 || datum.id == 12333 : datum.id == profileGame)"
+        }
+      ]
+    },
+    {
+      "data": {
+        "url": "./data/game_profiles.json"
+      },
+      "mark": {
+        "type": "line",
+        "point": true
+      },
+      "encoding": {
+        "detail": {
+          "field": "id"
+        },
+        "order": {
+          "field": "order"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.id == 12333",
+            "value": "#b65f26"
+          },
+          "value": "#176c7a"
+        },
+        "opacity": {
+          "value": 1
+        },
+        "strokeWidth": {
+          "value": 3
+        },
+        "tooltip": [
+          {
+            "field": "title",
+            "title": "Game"
+          },
+          {
+            "field": "axis",
+            "title": "Measure"
+          },
+          {
+            "field": "value",
+            "type": "quantitative",
+            "title": "Listed value",
+            "format": ".2~f"
+          },
+          {
+            "field": "minimum_players",
+            "type": "quantitative",
+            "title": "Minimum players"
+          }
+        ]
+      },
+      "transform": [
+        {
+          "filter": "(profileGame == -1 ? datum.id == 9209 || datum.id == 12333 : datum.id == profileGame)"
+        }
+      ]
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "order": 0,
+            "position": 0.0,
+            "label": "1"
+          },
+          {
+            "order": 0,
+            "position": 0.25,
+            "label": "2"
+          },
+          {
+            "order": 0,
+            "position": 0.5,
+            "label": "3"
+          },
+          {
+            "order": 0,
+            "position": 0.75,
+            "label": "4"
+          },
+          {
+            "order": 0,
+            "position": 1.0,
+            "label": "5"
+          },
+          {
+            "order": 1,
+            "position": 0.0,
+            "label": "0"
+          },
+          {
+            "order": 1,
+            "position": 0.25,
+            "label": "45"
+          },
+          {
+            "order": 1,
+            "position": 0.5,
+            "label": "90"
+          },
+          {
+            "order": 1,
+            "position": 0.75,
+            "label": "135"
+          },
+          {
+            "order": 1,
+            "position": 1.0,
+            "label": "180"
+          },
+          {
+            "order": 2,
+            "position": 0.0,
+            "label": "1"
+          },
+          {
+            "order": 2,
+            "position": 0.2,
+            "label": "2"
+          },
+          {
+            "order": 2,
+            "position": 0.4,
+            "label": "3"
+          },
+          {
+            "order": 2,
+            "position": 0.6,
+            "label": "4"
+          },
+          {
+            "order": 2,
+            "position": 0.8,
+            "label": "5"
+          },
+          {
+            "order": 2,
+            "position": 1.0,
+            "label": "6"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "dx": -12,
+        "align": "right",
+        "fontSize": 11,
+        "color": "#526369",
+        "stroke": "#fffefa",
+        "strokeWidth": 4
+      },
+      "encoding": {
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "./data/game_profiles.json"
+      },
+      "transform": [
+        {
+          "filter": "(profileGame == -1 ? datum.id == 9209 || datum.id == 12333 : datum.id == profileGame) && datum.order != 2"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "dx": 10,
+        "dy": -10,
+        "align": "left",
+        "fontWeight": 700,
+        "fontSize": 13,
+        "color": "#176c7a",
+        "stroke": "#fffefa",
+        "strokeWidth": 4
+      },
+      "encoding": {
+        "text": {
+          "field": "value",
+          "type": "quantitative",
+          "format": ".2~f"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.id == 12333",
+            "value": "#b65f26"
+          },
+          "value": "#176c7a"
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "./data/game_profiles.json"
+      },
+      "transform": [
+        {
+          "filter": "(profileGame == -1 ? datum.id == 9209 || datum.id == 12333 : datum.id == profileGame) && datum.order == 2"
+        },
+        {
+          "calculate": "datum.title + ' (' + datum.value + ' players)'",
+          "as": "endpoint"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "dy": -14,
+        "fontSize": 12,
+        "color": "#526369",
+        "stroke": "#fffefa",
+        "strokeWidth": 4,
+        "align": "right",
+        "dx": -12,
+        "fontWeight": 600
+      },
+      "encoding": {
+        "text": {
+          "field": "endpoint"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.id == 12333",
+            "value": "#b65f26"
+          },
+          "value": "#176c7a"
+        }
+      }
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "order",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          -0.15,
+          2.15
+        ]
+      },
+      "axis": {
+        "values": [
+          0,
+          1,
+          2
+        ],
+        "labelExpr": "datum.value == 0 ? 'Complexity (1 to 5)' : datum.value == 1 ? 'Listed minutes' : 'Maximum players'",
+        "labelPadding": 15,
+        "grid": false,
+        "domain": false,
+        "ticks": false,
+        "title": null
+      }
+    },
+    "y": {
+      "field": "position",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          -0.05,
+          1.05
+        ]
+      },
+      "axis": null
+    }
+  }
+}

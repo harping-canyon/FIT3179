@@ -1,0 +1,181 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Named city locations: every dot has equal area; positions are verified GeoNames matches.",
+  "width": "container",
+  "height": 350,
+  "padding": 0,
+  "background": "transparent",
+  "projection": {
+    "type": "equalEarth"
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "./data/world.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e8eae6",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.55
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "type": "MultiLineString",
+            "coordinates": [
+              [
+                [
+                  -13,
+                  35
+                ],
+                [
+                  -13,
+                  61
+                ],
+                [
+                  30,
+                  61
+                ],
+                [
+                  30,
+                  35
+                ],
+                [
+                  -13,
+                  35
+                ]
+              ]
+            ]
+          }
+        ]
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": null,
+        "stroke": "#9a6a35",
+        "strokeWidth": 1.2,
+        "strokeDash": [
+          4,
+          3
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "./data/cities.json"
+      },
+      "mark": {
+        "type": "circle",
+        "size": 24,
+        "color": "#176c7a",
+        "opacity": 0.8,
+        "stroke": "white",
+        "strokeWidth": 0.5,
+        "clip": true
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "city",
+            "type": "nominal"
+          },
+          {
+            "field": "country",
+            "type": "nominal"
+          },
+          {
+            "field": "game_count",
+            "type": "quantitative",
+            "title": "Linked games"
+          },
+          {
+            "field": "example_titles",
+            "type": "nominal",
+            "title": "Examples"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "./data/cities.json"
+      },
+      "mark": {
+        "type": "text",
+        "dy": -12,
+        "fontSize": 11,
+        "fontWeight": 700,
+        "fill": "#163c46",
+        "stroke": "white",
+        "strokeWidth": 2,
+        "clip": true
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "city",
+            "type": "nominal"
+          },
+          {
+            "field": "country",
+            "type": "nominal"
+          },
+          {
+            "field": "game_count",
+            "type": "quantitative",
+            "title": "Linked games"
+          },
+          {
+            "field": "example_titles",
+            "type": "nominal",
+            "title": "Examples"
+          }
+        ],
+        "text": {
+          "field": "city",
+          "type": "nominal"
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.city === 'New York City'"
+        }
+      ]
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "legend": {
+      "labelFont": "Inter",
+      "titleFont": "Inter",
+      "labelColor": "#435158",
+      "titleColor": "#435158"
+    },
+    "font": "Inter"
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v6.json",
+  "description": "Player support hierarchy. All leaves are disjoint and sum to 871 games.",
+  "width": 850,
+  "height": 390,
+  "padding": 0,
+  "autosize": "none",
+  "config": {
+    "font": "Inter"
+  },
+  "data": [
+    {
+      "name": "tree",
+      "url": "./data/player_tree.json",
+      "transform": [
+        {
+          "type": "stratify",
+          "key": "id",
+          "parentKey": "parent"
+        },
+        {
+          "type": "treemap",
+          "field": "n",
+          "sort": {
+            "field": "value",
+            "order": "descending"
+          },
+          "method": "squarify",
+          "paddingInner": 3,
+          "paddingTop": 28,
+          "size": [
+            {
+              "signal": "width"
+            },
+            {
+              "signal": "height"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "parents",
+      "source": "tree",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.depth == 1"
+        }
+      ]
+    },
+    {
+      "name": "leaves",
+      "source": "tree",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.depth == 2"
+        }
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "type": "rect",
+      "from": {
+        "data": "leaves"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "field": "x0"
+          },
+          "x2": {
+            "field": "x1"
+          },
+          "y": {
+            "field": "y0"
+          },
+          "y2": {
+            "field": "y1"
+          },
+          "fill": {
+            "signal": "datum.parent == 'solo' ? '#176c7a' : '#dce2dd'"
+          },
+          "tooltip": {
+            "signal": "{'Play mode': datum.parent == 'solo' ? 'Solo option' : 'Needs company', 'Maximum supported': datum.label, 'Games': datum.n, 'Share of all 871 games': format(datum.n/871, '.1%')}"
+          },
+          "stroke": {
+            "value": "#fffefa"
+          },
+          "strokeWidth": {
+            "value": 0
+          }
+        },
+        "hover": {
+          "stroke": {
+            "value": "#243238"
+          },
+          "strokeWidth": {
+            "value": 2
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "interactive": false,
+      "from": {
+        "data": "leaves"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "(datum.x0+datum.x1)/2"
+          },
+          "y": {
+            "signal": "(datum.y0+datum.y1)/2 + -11"
+          },
+          "text": {
+            "signal": "datum.n == 13 ? 'Solo only' : datum.label"
+          },
+          "font": {
+            "value": "Inter"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fontWeight": {
+            "value": 500
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "fill": {
+            "signal": "datum.parent == 'solo' ? '#fffefa' : '#243238'"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "interactive": false,
+      "from": {
+        "data": "leaves"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "(datum.x0+datum.x1)/2"
+          },
+          "y": {
+            "signal": "(datum.y0+datum.y1)/2 + 12"
+          },
+          "text": {
+            "field": "n"
+          },
+          "font": {
+            "value": "Inter"
+          },
+          "fontSize": {
+            "value": 22
+          },
+          "fontWeight": {
+            "value": 600
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "fill": {
+            "signal": "datum.parent == 'solo' ? '#fffefa' : '#243238'"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "interactive": false,
+      "from": {
+        "data": "parents"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "field": "x0",
+            "offset": 3
+          },
+          "y": {
+            "field": "y0",
+            "offset": 15
+          },
+          "text": {
+            "signal": "datum.label + ', ' + datum.total + ' games'"
+          },
+          "font": {
+            "value": "Inter"
+          },
+          "fontSize": {
+            "value": 14
+          },
+          "fontWeight": {
+            "value": 600
+          },
+          "fill": {
+            "value": "#243238"
+          }
+        }
+      }
+    }
+  ]
+}

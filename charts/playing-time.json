@@ -1,0 +1,224 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "background": "transparent",
+  "autosize": {
+    "type": "pad"
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#526369",
+      "titleColor": "#526369",
+      "gridColor": "#edf0ee"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    },
+    "font": "Inter"
+  },
+  "data": {
+    "url": "./data/games.json"
+  },
+  "transform": [
+    {
+      "filter": "datum.minutes != null"
+    },
+    {
+      "density": "minutes",
+      "groupby": [
+        "group"
+      ],
+      "extent": [
+        0,
+        360
+      ],
+      "bandwidth": 30,
+      "steps": 180
+    },
+    {
+      "lookup": "group",
+      "from": {
+        "data": {
+          "url": "./data/duration_summary.json"
+        },
+        "key": "group",
+        "fields": [
+          "median",
+          "n"
+        ]
+      }
+    },
+    {
+      "calculate": "-datum.density",
+      "as": "negative_density"
+    },
+    {
+      "calculate": "(datum.group == 'Wargame' ? 'Wargames' : datum.group) + ' (n = ' + datum.n + ')'",
+      "as": "groupLabel"
+    }
+  ],
+  "facet": {
+    "column": {
+      "field": "groupLabel",
+      "type": "nominal",
+      "header": {
+        "title": null,
+        "labelFontSize": 14
+      }
+    }
+  },
+  "spec": {
+    "width": 230,
+    "height": 370,
+    "layer": [
+      {
+        "mark": {
+          "type": "area",
+          "orient": "horizontal",
+          "opacity": 0.8
+        },
+        "encoding": {
+          "y": {
+            "field": "value",
+            "type": "quantitative",
+            "title": "Listed playing time (minutes)",
+            "scale": {
+              "domain": [
+                0,
+                360
+              ],
+              "nice": false
+            },
+            "axis": {
+              "values": [
+                0,
+                60,
+                120,
+                180,
+                240,
+                300,
+                360
+              ]
+            }
+          },
+          "x": {
+            "field": "negative_density",
+            "type": "quantitative",
+            "axis": null,
+            "title": null
+          },
+          "color": {
+            "field": "group",
+            "scale": {
+              "domain": [
+                "Wargame",
+                "Other games"
+              ],
+              "range": [
+                "#b65f26",
+                "#176c7a"
+              ]
+            },
+            "legend": null
+          },
+          "x2": {
+            "field": "density"
+          }
+        }
+      },
+      {
+        "transform": [
+          {
+            "aggregate": [
+              {
+                "op": "max",
+                "field": "median",
+                "as": "median"
+              }
+            ],
+            "groupby": [
+              "group"
+            ]
+          }
+        ],
+        "mark": {
+          "type": "tick",
+          "orient": "horizontal",
+          "size": 60,
+          "thickness": 3,
+          "color": "#1f3035"
+        },
+        "encoding": {
+          "x": {
+            "datum": 0,
+            "type": "quantitative",
+            "axis": null
+          },
+          "y": {
+            "field": "median",
+            "type": "quantitative"
+          }
+        }
+      },
+      {
+        "transform": [
+          {
+            "aggregate": [
+              {
+                "op": "max",
+                "field": "median",
+                "as": "median"
+              }
+            ],
+            "groupby": [
+              "group"
+            ]
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "dy": -12,
+          "fontWeight": 700,
+          "color": "#1f3035",
+          "fontSize": 14
+        },
+        "encoding": {
+          "x": {
+            "datum": 0,
+            "type": "quantitative",
+            "axis": null
+          },
+          "y": {
+            "field": "median",
+            "type": "quantitative"
+          },
+          "text": {
+            "field": "median",
+            "type": "quantitative",
+            "format": ".0f"
+          }
+        }
+      }
+    ]
+  },
+  "resolve": {
+    "scale": {
+      "x": "shared"
+    }
+  },
+  "usermeta": {
+    "responsiveFacet": {
+      "columns": 2,
+      "reservedWidth": 56,
+      "spacing": 28
+    },
+    "smoothing": "Gaussian KDE, 30-minute bandwidth. Checked against 10 and 15 minutes; fine peaks depend on rounded source durations. Interpret broad spread and exact medians, not individual peaks."
+  },
+  "spacing": 28,
+  "bounds": "flush"
+}

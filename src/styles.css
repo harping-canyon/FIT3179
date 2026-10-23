@@ -1,0 +1,182 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('../assets/fonts/InterVariable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Fraunces';
+  src: url('../assets/fonts/Fraunces.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  color-scheme: light;
+  --font-body: Inter, Arial, sans-serif;
+  --surface: #fffefa;
+  --control-border: #819997;
+  --control-radius: 3px;
+  --space-6: 24px;
+  --ink: #243238;
+  --muted: #536166;
+  --teal: #176c7a;
+  --paper: #f5f2eb;
+  --line: #d8d9d2;
+  --soft: #eceee8;
+  --accent: #c99b59;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: auto; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.6 var(--font-body); }
+a { color: var(--teal); text-underline-offset: .22em; }
+a:hover { color: #0b4956; }
+a:focus-visible, summary:focus-visible, input:focus-visible, select:focus-visible, .table-scroll:focus-visible {
+  outline: 2px solid var(--teal); outline-offset: 3px;
+}
+.wrap { width: min(100% - 48px, 1120px); margin-inline: auto; }
+h1, h2, h3, h4, p { margin-top: 0; }
+h1, h2, .chart-card__title {
+  font-family: 'Fraunces', Georgia, serif; font-weight: 450;
+  font-optical-sizing: auto; font-variation-settings: "SOFT" 30, "WONK" 0;
+  letter-spacing: -.025em;
+}
+.skip-link { position: absolute; z-index: 10; top: -100px; left: 16px; padding: 8px 12px; background: white; }
+.skip-link:focus { top: 12px; }
+.eyebrow { color: var(--teal); font-size: 12px; font-weight: 700; letter-spacing: .025em; }
+.hero {
+  width: 100%; margin: 0; padding: 46px max(24px, calc((100% - 1120px) / 2)) 24px;
+  background: var(--ink); color: white;
+  display: block;
+}
+.hero__header { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; margin-bottom: 20px; }
+.hero__topic { color: #d5dce0; font-size: 13px; font-weight: 600; margin: 0; }
+.hero__date { color: #c5d0ce; font-size: 12px; white-space: nowrap; }
+h1 { font-size: clamp(48px, 6.4vw, 84px); line-height: 1.06; margin-bottom: 24px; }
+.title-stop { color: var(--accent); }
+.hero__byline { margin: -8px 0 24px; color: #c5d0ce; font-size: 13px; line-height: 1.5; }
+.hero__lead { max-width: 68ch; margin-bottom: 30px; font-size: 20px; line-height: 1.55; color: #e0e7e5; }
+.story-nav { display: flex; flex-wrap: wrap; gap: 10px 32px; margin: 0 0 16px; font-size: 13px; }
+.story-nav a { color: white; text-decoration: none; border-bottom: 1px solid #5a7375; padding-bottom: 6px; }
+.story-nav a:hover { color: var(--accent); border-color: var(--accent); }
+.story-section { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; padding-top: 52px; padding-bottom: 64px; }
+.section-intro { max-width: 960px; margin-bottom: 10px; }
+.section-intro .eyebrow { margin-bottom: 18px; font-size: 19px; font-weight: 650; line-height: 1.3; letter-spacing: 0; }
+h2 { font-size: clamp(31px, 3.4vw, 43px); line-height: 1.15; }
+.section-intro h2 { margin-bottom: 18px; max-width: 900px; }
+.section-intro > p:last-child { max-width: 76ch; color: var(--muted); font-size: 16px; line-height: 1.7; }
+.chapter { border-top: 3px solid var(--ink); }
+.story-section { scroll-margin-top: 20px; }
+#hero-chart { min-width: 0; }
+.chart-card { margin: 0; background: var(--surface); border: 0; border-top: 2px solid var(--ink); overflow: hidden; }
+.chart-card__top { padding: 26px 28px 0; }
+.chart-card__title { margin-bottom: 10px; font-size: 27px; line-height: 1.2; }
+.chart-card__description { max-width: 90ch; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+.chart-card__views { display: grid; grid-template-columns: 1.25fr 1fr; gap: 24px; padding: 24px 28px 18px; }
+.chart-card__views--single { grid-template-columns: 1fr; }
+.chart-card__panel { min-width: 0; }
+.chart-card__panel + .chart-card__panel { border-left: 1px solid var(--line); padding-left: 24px; }
+.chart-card__panel-title { margin-bottom: 12px; color: var(--muted); font-size: 12px; font-weight: 700; }
+.chart-card__frame { min-height: 210px; width: 100%; color: var(--muted); font-size: 14px; }
+.chart-card__frame.vega-embed { display: block !important; width: 100% !important; }
+.chart-card__frame svg, .chart-card__frame canvas { max-width: 100%; height: auto; }
+.chart-card__frame svg text[stroke] { paint-order: stroke fill; }
+.chart-card__frame--error { color: #9b482b; }
+.chart-card__caption { padding: 16px 28px 22px; border-top: 0; background: transparent; }
+.chart-card__finding { max-width: 88ch; margin-bottom: 9px; color: var(--ink); font-size: 14px; line-height: 1.65; }
+.chart-card__panel--scroll { overflow-x: auto; scrollbar-color: #9cafaa transparent; scrollbar-width: thin; }
+.chart-card__panel--scroll:focus-visible { outline: 3px solid #b8752f; outline-offset: -3px; }
+.country-details { padding: 0 4px; font-size: 14px; }
+.country-details summary { cursor: pointer; color: var(--teal); font-weight: 700; padding: 8px 0; }
+.country-details p { color: var(--muted); margin: 10px 0; }
+.table-scroll { max-height: 430px; overflow: auto; }
+.table-scroll table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.table-scroll caption { text-align: left; font-weight: 700; padding: 8px 0; }
+.table-scroll th, .table-scroll td { text-align: left; vertical-align: top; padding: 9px 12px; border-bottom: 1px solid var(--line); }
+.table-scroll th { position: sticky; top: 0; background: var(--soft); }
+.table-scroll th:nth-child(2), .table-scroll td:nth-child(2) { text-align: right; font-variant-numeric: tabular-nums; }
+.table-scroll td:last-child { width: 48%; }
+#city-search { display: block; padding: 10px 12px; width: min(100%, 380px); margin-top: 6px; border: 1px solid var(--control-border); border-radius: var(--control-radius); background: white; font: inherit; }
+.vega-bindings { margin-top: 18px; padding: 16px 0 4px; border-top: 1px solid var(--line); font-size: 13px; }
+.vega-bindings:empty { display: none; }
+.vega-bindings label { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.vega-bindings select { max-width: 100%; min-height: 40px; padding: 9px 30px 9px 12px; border: 1px solid var(--control-border); border-radius: var(--control-radius); background: white; color: var(--ink); font: inherit; }
+.site-footer { border-top: 3px solid var(--ink); padding-top: 30px; padding-bottom: 50px; color: var(--muted); font-size: 13px; }
+.site-footer p { max-width: 100ch; margin-bottom: 15px; }
+.site-footer strong { color: var(--ink); }
+.footer-heading { font-size: 27px; margin-bottom: 22px; }
+/* Tooltip layout is isolated from the page's reference tables.
+   Vega's default max-width and ellipsis on BOTH columns must be reset. */
+#vg-tooltip-element.vg-tooltip {
+  background: var(--ink); color: #fffefa; border: 1px solid #718d89;
+  border-top: 3px solid var(--accent); border-radius: 2px;
+  box-shadow: 0 8px 28px #102a3340;
+  padding: 9px 12px; font: 13px/1.45 var(--font-body);
+  min-width: 0; max-width: min(400px, calc(100vw - 24px));
+  width: max-content; height: auto; max-height: none; overflow: visible;
+  z-index: 10000; pointer-events: none;
+}
+#vg-tooltip-element.vg-tooltip table { width: 100%; max-width: 100%; border-collapse: collapse; table-layout: auto; font: inherit; }
+#vg-tooltip-element.vg-tooltip td,
+#vg-tooltip-element.vg-tooltip td.key,
+#vg-tooltip-element.vg-tooltip td.value {
+  padding: 4px 0; border: 0; border-bottom: 1px solid #ffffff24;
+  display: table-cell; position: static; height: auto; max-height: none;
+  min-width: 0; max-width: none; overflow: visible; text-overflow: clip;
+  white-space: normal; overflow-wrap: anywhere; word-break: normal;
+  text-align: left; vertical-align: top; font: inherit;
+}
+#vg-tooltip-element.vg-tooltip td.key { color: #c3d5cf; width: auto; padding-right: 12px; overflow-wrap: normal; font-weight: 400; }
+#vg-tooltip-element.vg-tooltip td.value { color: #fffefa; width: auto; font-weight: 600; font-variant-numeric: tabular-nums; }
+#vg-tooltip-element.vg-tooltip tr:last-child td { border-bottom: 0; }
+#vg-tooltip-element.vg-tooltip h2 { margin: 0 0 6px; max-width: none; color: #fffefa; font: 600 14px/1.4 var(--font-body); white-space: normal; overflow-wrap: anywhere; }
+@media (min-width: 1151px) {
+  .chart-card--aside { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); align-items: start; }
+  .chart-card--aside .chart-card__top { grid-column: 1; padding: 26px 24px 18px; }
+  .chart-card--aside .chart-card__views { grid-column: 2; grid-row: 1 / span 2; padding-top: 30px; }
+  .chart-card--aside .chart-card__caption { grid-column: 1; padding: 18px 24px 24px; border-top: 0; background: transparent; }
+}
+@media (max-width: 850px) {
+  .chart-card__views { grid-template-columns: 1fr; }
+  .chart-card__panel + .chart-card__panel { border-left: 0; border-top: 1px solid var(--line); padding: 18px 0 0; }
+}
+@media (max-width: 650px) {
+  .hero { padding-top: 34px; }
+  .hero__lead { font-size: 18px; }
+  .story-nav { gap: 12px 24px; }
+  h1 { font-size: clamp(52px, 12vw, 72px); }
+}
+@media (max-width: 560px) {
+  .wrap { width: min(100% - 28px, 1120px); }
+  .hero { width: 100%; padding-inline: 20px; }
+  .story-section { padding-top: 38px; padding-bottom: 44px; }
+  .chart-card__top { padding: 20px 16px 0; }
+  .chart-card__title { font-size: 24px; }
+  .chart-card__views { padding: 20px 12px 14px; }
+  .chart-card__caption { padding: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* A cursor-following panel cannot fit beside a mark on a phone.
+   Anchor it within the viewport so neither column can fall off-screen. */
+@media (max-width: 560px) {
+  #vg-tooltip-element.vg-tooltip {
+    position: fixed; left: 12px !important; right: 12px !important;
+    top: auto !important; bottom: 12px !important;
+    width: auto; min-width: 0; max-width: none;
+    max-height: calc(100dvh - 24px); overflow-y: auto; pointer-events: auto;
+  }
+}
+
+/* Quiet supporting information; the findings and charts carry the hierarchy. */
+.chart-files-heading { margin: 24px 0 12px; color: var(--ink); font-size: 14px; font-weight: 600; }
+.chart-files { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 32px; margin: 0; padding-left: 18px; }
+.chart-files li { padding-left: 2px; }
+.vega-bindings select:focus:not(:focus-visible) { outline: none; }
+
+.vega-bindings select:focus-visible { outline-offset: 0; border-color: var(--teal); }
+
+.section-intro h2:focus { outline: none; }
+
+.section-bridge { max-width: 76ch; margin: 12px 0 0; color: var(--muted); font-size: 16px; line-height: 1.7; }

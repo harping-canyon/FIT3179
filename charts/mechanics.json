@@ -1,0 +1,97 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": "container",
+  "height": 280,
+  "background": "transparent",
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#526369",
+      "titleColor": "#526369",
+      "gridColor": "#edf0ee"
+    },
+    "font": "Inter"
+  },
+  "data": {
+    "url": "./data/mechanics.json"
+  },
+  "encoding": {
+    "y": {
+      "field": "display_label",
+      "type": "nominal",
+      "sort": [
+        "Managing a hand",
+        "Rolling dice",
+        "Collecting sets",
+        "Competing for influence",
+        "Choosing from a shared pool"
+      ],
+      "title": null,
+      "axis": {
+        "labelLimit": 190
+      }
+    },
+    "x": {
+      "field": "game_count",
+      "type": "quantitative",
+      "title": "Games (out of 871)",
+      "scale": {
+        "domain": [
+          0,
+          320
+        ]
+      },
+      "axis": {
+        "tickCount": 6
+      }
+    },
+    "tooltip": [
+      {
+        "field": "display_label",
+        "type": "nominal",
+        "title": "Way of playing"
+      },
+      {
+        "field": "game_count",
+        "type": "quantitative",
+        "title": "Games"
+      },
+      {
+        "field": "definition",
+        "type": "nominal",
+        "title": "How it works"
+      }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "color": "#176c7a",
+        "size": 27
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 6,
+        "color": "#1f3035"
+      },
+      "encoding": {
+        "text": {
+          "field": "game_count",
+          "type": "quantitative"
+        }
+      }
+    }
+  ]
+}
