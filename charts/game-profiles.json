@@ -299,6 +299,10 @@
       "transform": [
         {
           "filter": "(profileGame == -1 ? datum.id == 9209 || datum.id == 12333 : datum.id == profileGame) && datum.order != 2"
+        },
+        {
+          "calculate": "datum.order == 1 ? format(datum.value / 60, '.2~f') + (datum.value == 60 ? ' hour' : ' hours') : format(datum.value, '.2~f')",
+          "as": "value_label"
         }
       ],
       "mark": {
@@ -314,9 +318,7 @@
       },
       "encoding": {
         "text": {
-          "field": "value",
-          "type": "quantitative",
-          "format": ".2~f"
+          "field": "value_label"
         },
         "color": {
           "condition": {

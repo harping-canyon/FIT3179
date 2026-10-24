@@ -1,5 +1,5 @@
 import {setupNavigation} from './navigation.js?v=13';
-import {charts} from './charts.js?v=32';
+import {charts} from './charts.js?v=33';
 import {createChartCard} from './chart-card.js?v=31';
 import {renderChart} from './vega.js?v=12';
 

@@ -131,7 +131,7 @@
     {
       "transform": [
         {
-          "filter": "datum.id === gameFocus"
+          "filter": "datum.id === gameFocus && gameFocus !== 9209"
         }
       ],
       "mark": {
@@ -150,6 +150,79 @@
           "field": "title",
           "type": "nominal"
         }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.id === 9209 && gameFocus === 9209"
+        }
+      ],
+      "mark": {
+        "type": "rule",
+        "color": "#176c7a",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "x2": {
+          "datum": 1.6
+        },
+        "y2": {
+          "datum": 9.05
+        },
+        "tooltip": null
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.id === 9209 && gameFocus === 9209"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "fontSize": 12,
+        "fontWeight": 700,
+        "color": "#176c7a"
+      },
+      "encoding": {
+        "x": {
+          "datum": 1.12
+        },
+        "y": {
+          "datum": 9.55
+        },
+        "text": {
+          "value": "Ticket to Ride"
+        },
+        "tooltip": null
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.id === 9209 && gameFocus === 9209"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "fontSize": 12,
+        "fontWeight": 400,
+        "color": "#176c7a"
+      },
+      "encoding": {
+        "x": {
+          "datum": 1.12
+        },
+        "y": {
+          "datum": 9.2
+        },
+        "text": {
+          "value": "Less complex than 84% of these games"
+        },
+        "tooltip": null
       }
     }
   ]

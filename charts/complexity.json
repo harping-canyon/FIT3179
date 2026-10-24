@@ -153,11 +153,15 @@
           "type": "quantitative"
         },
         "text": {
-          "field": "median",
-          "type": "quantitative",
-          "format": ".2f"
+          "field": "median_label"
         }
-      }
+      },
+      "transform": [
+        {
+          "calculate": "'Median ' + format(datum.median, '.2f')",
+          "as": "median_label"
+        }
+      ]
     }
   ]
 }

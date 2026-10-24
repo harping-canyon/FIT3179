@@ -118,7 +118,7 @@ export const charts = [
     "spec": "./charts/ratings.json",
     "title": "Ticket to Ride scores 7.4/10 at a complexity of 1.8/5",
     "description": "Each dot is a game; darker patches contain more games. Ratings are BoardGameGeek users’ average scores out of ten.",
-    "insight": "Ticket to Ride scores 7.4/10 and is less complex than 84% of the games in this sample."
+    "insight": ""
   },
   {
     "id": "C9",
@@ -138,7 +138,7 @@ export const charts = [
     "spec": "./charts/game-profiles.json",
     "title": "Twilight Struggle takes longer but seats fewer players than Ticket to Ride",
     "description": "Six games compared on complexity, listed playing time and maximum player count. Each axis uses a different scale.",
-    "insight": "Longer games do not necessarily seat more people: Power Grid lists two hours for six; Great Western Trail, two and a half hours for four."
+    "insight": ""
   },
   {
     "id": "C12",
