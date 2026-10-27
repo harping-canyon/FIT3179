@@ -1,0 +1,379 @@
+{
+  "organisation": "Spiel des Jahres e.V.",
+  "catalogue": "https://www.spiel-des-jahres.de/spiele/",
+  "api": "https://www.spiel-des-jahres.de/wp-json/wp/v2/spiele",
+  "retrieved": "2026-10-27",
+  "award": "Spiel des Jahres",
+  "scope": "Main award winners only, 1979–2024 inclusive. Excludes nominations, recommendations, special awards, Kennerspiel and Kinderspiel. Awards belong to the listed game identity; expansions and separate editions do not inherit them.",
+  "matching": "Normalised exact titles plus three reviewed German-to-English aliases. bgg_id is null when the winner is outside the 871-game story cohort.",
+  "winners": [
+    {
+      "year": 1979,
+      "source_title": "Hase und Igel",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/hase-und-igel/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 1980,
+      "source_title": "Rummikub",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/rummikub/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 1981,
+      "source_title": "Focus",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/focus/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 1982,
+      "source_title": "Sagaland",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/sagaland/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 1983,
+      "source_title": "Scotland Yard",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/scotland-yard/",
+      "bgg_id": 438,
+      "match_method": "normalised exact title",
+      "bgg_title": "Scotland Yard"
+    },
+    {
+      "year": 1984,
+      "source_title": "Dampfross",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/dampfross/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 1985,
+      "source_title": "Sherlock Holmes Criminal-Cabinet",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/sherlock-holmes-criminal-cabinet/",
+      "bgg_id": 2511,
+      "match_method": "reviewed translated title",
+      "bgg_title": "Sherlock Holmes Consulting Detective: The Thames Murders & Other Cases"
+    },
+    {
+      "year": 1986,
+      "source_title": "Heimlich & Co.",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/heimlich-co/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 1987,
+      "source_title": "Auf Achse",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/auf-achse/",
+      "bgg_id": 110,
+      "match_method": "normalised exact title",
+      "bgg_title": "Auf Achse"
+    },
+    {
+      "year": 1988,
+      "source_title": "Barbarossa und die Rätselmeister",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/barbarossa-und-die-raetselmeister/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 1989,
+      "source_title": "Café International",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/cafe-international/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 1990,
+      "source_title": "Adel verpflichtet",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/adel-verpflichtet/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 1991,
+      "source_title": "Drunter & Drüber",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/drunter-drueber/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 1992,
+      "source_title": "Um Reifenbreite",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/um-reifenbreite/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 1993,
+      "source_title": "Bluff",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/bluff/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 1994,
+      "source_title": "Manhattan",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/manhattan/",
+      "bgg_id": 199,
+      "match_method": "normalised exact title",
+      "bgg_title": "Manhattan"
+    },
+    {
+      "year": 1995,
+      "source_title": "Die Siedler von Catan",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/die-siedler-von-catan/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 1996,
+      "source_title": "El Grande",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/el-grande/",
+      "bgg_id": 93,
+      "match_method": "normalised exact title",
+      "bgg_title": "El Grande"
+    },
+    {
+      "year": 1997,
+      "source_title": "Mississippi Queen",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/6453/",
+      "bgg_id": 256,
+      "match_method": "normalised exact title",
+      "bgg_title": "Mississippi Queen"
+    },
+    {
+      "year": 1998,
+      "source_title": "Elfenland",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/elfenland/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 1999,
+      "source_title": "Tikal",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/tikal/",
+      "bgg_id": 54,
+      "match_method": "normalised exact title",
+      "bgg_title": "Tikal"
+    },
+    {
+      "year": 2000,
+      "source_title": "Torres",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/torres/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 2001,
+      "source_title": "Carcassonne",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/carcassonne/",
+      "bgg_id": 822,
+      "match_method": "normalised exact title",
+      "bgg_title": "Carcassonne"
+    },
+    {
+      "year": 2002,
+      "source_title": "Villa Paletti",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/villa-paletti/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 2003,
+      "source_title": "Der Palast von Alhambra",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/der-palast-von-alhambra/",
+      "bgg_id": 6249,
+      "match_method": "reviewed translated title",
+      "bgg_title": "Alhambra"
+    },
+    {
+      "year": 2004,
+      "source_title": "Zug um Zug",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/zug-um-zug/",
+      "bgg_id": 9209,
+      "match_method": "reviewed translated title",
+      "bgg_title": "Ticket to Ride"
+    },
+    {
+      "year": 2005,
+      "source_title": "Niagara",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/niagara/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 2006,
+      "source_title": "Thurn und Taxis",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/thurn-und-taxis/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 2007,
+      "source_title": "Zooloretto",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/zooloretto/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 2008,
+      "source_title": "Keltis",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/keltis/",
+      "bgg_id": 34585,
+      "match_method": "normalised exact title",
+      "bgg_title": "Keltis"
+    },
+    {
+      "year": 2009,
+      "source_title": "Dominion",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/dominion/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 2010,
+      "source_title": "Dixit",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/dixit/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 2011,
+      "source_title": "Qwirkle",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/qwirkle/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 2012,
+      "source_title": "Kingdom Builder",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/kingdom-builder/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 2013,
+      "source_title": "Hanabi",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/hanabi/",
+      "bgg_id": 98778,
+      "match_method": "normalised exact title",
+      "bgg_title": "Hanabi"
+    },
+    {
+      "year": 2014,
+      "source_title": "Camel Up",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/camel-up/",
+      "bgg_id": 153938,
+      "match_method": "normalised exact title",
+      "bgg_title": "Camel Up"
+    },
+    {
+      "year": 2015,
+      "source_title": "Colt Express",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/colt-express/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 2016,
+      "source_title": "Codenames",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/codenames/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 2017,
+      "source_title": "Kingdomino",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/kingdomino/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 2018,
+      "source_title": "Azul",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/azul/",
+      "bgg_id": 230802,
+      "match_method": "normalised exact title",
+      "bgg_title": "Azul"
+    },
+    {
+      "year": 2019,
+      "source_title": "Just One",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/just-one/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 2020,
+      "source_title": "Pictures",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/pictures/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 2021,
+      "source_title": "MicroMacro: Crime City",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/micromacro-crime-city/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 2022,
+      "source_title": "Cascadia",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/cascadia/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 2023,
+      "source_title": "Dorfromantik: Das Brettspiel",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/dorfromantik-das-brettspiel/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    },
+    {
+      "year": 2024,
+      "source_title": "Sky Team",
+      "source_url": "https://www.spiel-des-jahres.de/spiele/sky-team/",
+      "bgg_id": null,
+      "match_method": "outside story cohort",
+      "bgg_title": null
+    }
+  ]
+}

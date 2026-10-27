@@ -113,22 +113,22 @@ export const charts = [
   },
   {
     "id": "C8",
-    "fileLabel": "Ratings",
+    "fileLabel": "Ratings and award winners",
     "mount": "#ratings-chart",
     "spec": "./charts/ratings.json",
     "title": "Ticket to Ride scores 7.4/10 at a complexity of 1.8/5",
-    "description": "Each dot is a game; darker patches contain more games. Ratings are BoardGameGeek users’ average scores out of ten.",
+    "description": "Each dot is a game; darker patches contain more games. Orange rings mark the 14 Spiel des Jahres main-award winners (1979–2024) in this sample. Ratings and complexity are from BoardGameGeek.",
     "insight": ""
   },
   {
     "id": "C9",
-    "fileLabel": "Player counts",
+    "fileLabel": "Player counts and award winners",
     "minWidth": 650,
     "mount": "#players-chart",
     "spec": "./charts/player-counts.json",
-    "title": "Only 13 games are strictly for one player",
-    "description": "Area counts games, grouped by solo support and then maximum player count. Each game appears once.",
-    "insight": "227 of the 240 games with a solo option also support other players. Only 13 are solo-only."
+    "title": "Only 13 of the 871 games are strictly for one player",
+    "description": "Area counts games, grouped by solo support and then maximum player count. Switch from all 871 games to the 14 Spiel des Jahres winners; counts and proportions update for that group. Each game appears once.",
+    "insight": "Across all 871 games, 227 of the 240 games with a solo option also support other players. Only 13 are solo-only. Among the 14 award winners, one supports solo play."
   },
   {
     "id": "C10",

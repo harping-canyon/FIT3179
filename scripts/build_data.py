@@ -14,6 +14,7 @@ from pathlib import Path
 
 from story_data import build_story
 from build_player_tree import build_player_tree
+from build_awards import enrich_awards
 
 ROOT = Path(__file__).resolve().parents[1]
 RAW = ROOT / "research" / "validation-data"
@@ -187,10 +188,12 @@ def main() -> None:
         "world.geojson": write_json("world.geojson", world),
     }
     sizes.update({name: write_json(name, value) for name, value in story.items()})
+    award_sizes, award_provenance = enrich_awards(story["games.json"])
+    sizes.update(award_sizes)
     source_manifest = json.loads((RAW / "natural-earth-manifest.json").read_text(encoding="utf-8"))
     meta = {
-        "updated": "2026-10-23",
-        "pipeline_version": 4,
+        "updated": "2026-10-27",
+        "pipeline_version": 5,
         "input_sha256": {name: fingerprint(name)
                          for name in ["game.csv", "family.csv", "b_game_family.csv", "category.csv", "b_game_category.csv", "mechanic.csv", "b_game_mechanic.csv", "countryInfo.txt", "cities15000.zip"]},
         "statistics_vintage": "Mixed: the source adds games without refreshing existing statistics; release date is not the date of every rating.",
@@ -209,6 +212,7 @@ def main() -> None:
             "boardgames": "https://www.kaggle.com/datasets/sylvainballerini/bgg-data-full",
             "geonames": "https://www.geonames.org/export/",
             "boundaries": source_manifest,
+            "awards": award_provenance,
         },
         "note": "Counts are documented game-country associations, not sales, production locations or a complete setting census. One game can belong to several countries.",
         "output_bytes_excluding_metadata": sum(sizes.values()),

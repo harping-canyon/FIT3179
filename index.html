@@ -10,7 +10,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/vega@6.2.0"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/vega-lite@6.4.3"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/vega-embed@7.1.0"></script>
-    <script type="module" src="./src/main.js?v=33"></script>
+    <script type="module" src="./src/main.js?v=34"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to the story</a>
@@ -19,7 +19,7 @@
       <section class="hero wrap" aria-labelledby="page-title">
         <div class="hero__header">
           <p class="hero__topic">Board games</p>
-          <time class="hero__date" datetime="2026-10-22">22 October 2026</time>
+          <time class="hero__date" datetime="2026-10-27">27 October 2026</time>
         </div>
         <h1 id="page-title">The world on the table<span class="title-stop">.</span></h1>
         <p class="hero__byline">By Laurence Downie, 32477848</p>
@@ -90,9 +90,10 @@
 
     <footer id="method" class="site-footer wrap">
       <h2 class="footer-heading">Sources</h2>
-      <p><a href="https://www.kaggle.com/datasets/sylvainballerini/bgg-data-full">BoardGameGeek, extracted by Sylvain Ballerini</a>; <a href="https://www.geonames.org/export/">GeoNames</a>; <a href="https://www.naturalearthdata.com/about/terms-of-use/">Natural Earth</a>. <a href="./data/metadata.json">Data provenance</a>.</p>
+      <p><a href="https://www.kaggle.com/datasets/sylvainballerini/bgg-data-full">BoardGameGeek, extracted by Sylvain Ballerini</a>; <a href="https://www.spiel-des-jahres.de/spiele/">Spiel des Jahres e.V. awards catalogue</a>; <a href="https://www.geonames.org/export/">GeoNames</a>; <a href="https://www.naturalearthdata.com/about/terms-of-use/">Natural Earth</a>. <a href="./data/metadata.json">Data provenance</a>.</p>
       <p>September 2026 extract: 871 games released in 1900–2024, each with at least 1,000 ratings, 30 complexity votes and a country or city tag.</p>
       <p>The city map excludes nine ambiguous tags and follows GeoNames’ regional classification. Country and city counts overlap. Playing times cover 854 games and exclude estimates above six hours; all 17 missing times are Wargames. Editions may differ.</p>
+      <p>The ratings scatterplot and player-count treemap combine BoardGameGeek game records with the independent Spiel des Jahres main-award catalogue. The <a href="./data/sources/sdj-awards.json">award extract and title matches</a> covers all 46 winners from 1979–2024; 14 are in this geographic sample. Main awards only: nominations, recommendations, special awards, Kennerspiel and Kinderspiel are excluded. Translated titles were checked; expansions and separate editions do not inherit an award. Retrieved 27 October 2026.</p>
       <h3 class="chart-files-heading">Chart definitions (JSON)</h3>
       <ul id="chart-files" class="chart-files"></ul>
     </footer>

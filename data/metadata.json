@@ -1,6 +1,6 @@
 {
-  "updated": "2026-10-23",
-  "pipeline_version": 4,
+  "updated": "2026-10-27",
+  "pipeline_version": 5,
   "input_sha256": {
     "game.csv": "a104e2a3f88c26346deff65657809521fcae28da9094b123bcacd455219e9836",
     "family.csv": "90eb89dafbd5d0f568ec9e4e051f470b9aa375d485269214fb8c6c09467ea202",
@@ -18,24 +18,27 @@
   "story_games": 871,
   "city_locations": 121,
   "files": {
-    "countries.json": 28143,
-    "world.geojson": 253532,
-    "mechanic_nodes.json": 551,
-    "mechanic_edges.json": 5800,
-    "game_profiles.json": 2226,
-    "duration_summary.json": 92,
-    "games.json": 192343,
-    "cities.json": 23360,
-    "country_categories.json": 5464,
-    "country_ranks.json": 2383,
-    "complexity_summary.json": 268,
-    "mechanics.json": 846,
-    "time_ecdf.json": 2412,
-    "players.json": 289,
-    "examples.json": 1943,
-    "story_evidence.json": 689,
-    "geography_audit.json": 22289,
-    "player_tree.json": 585
+    "countries.json": 28142,
+    "world.geojson": 253531,
+    "mechanic_nodes.json": 550,
+    "mechanic_edges.json": 5799,
+    "game_profiles.json": 2225,
+    "duration_summary.json": 91,
+    "games.json": 192342,
+    "cities.json": 23359,
+    "country_categories.json": 5463,
+    "country_ranks.json": 2382,
+    "complexity_summary.json": 267,
+    "mechanics.json": 845,
+    "time_ecdf.json": 2411,
+    "players.json": 288,
+    "examples.json": 1942,
+    "story_evidence.json": 688,
+    "geography_audit.json": 22288,
+    "player_tree.json": 584,
+    "sources/sdj-awards.json": 11820,
+    "award_winners.json": 1730,
+    "player_tree_awards.json": 1415
   },
   "cohort": "BGG base games released 1900–2024 with at least 1,000 ratings and 30 complexity votes, valid rating and complexity, and an explicit Country: or Cities: family tag",
   "qualifying_games": 3964,
@@ -77,8 +80,23 @@
       "bytes": 838726,
       "sha256": "6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f",
       "feature_count": 177
+    },
+    "awards": {
+      "organisation": "Spiel des Jahres e.V.",
+      "catalogue": "https://www.spiel-des-jahres.de/spiele/",
+      "extract": "./sources/sdj-awards.json",
+      "retrieved": "2026-10-27",
+      "scope": "Main award winners only, 1979–2024 inclusive. Excludes nominations, recommendations, special awards, Kennerspiel and Kinderspiel. Awards belong to the listed game identity; expansions and separate editions do not inherit them.",
+      "matching": "Normalised exact titles plus three reviewed German-to-English aliases. bgg_id is null when the winner is outside the 871-game story cohort.",
+      "sha256": "383bb0d54441461f8f6c2a5e919c388ab0118e5ef1471a50fec8de628a6ca40f",
+      "source_winners": 46,
+      "matched_story_games": 14,
+      "charts": [
+        "ratings.json",
+        "player-counts.json"
+      ]
     }
   },
   "note": "Counts are documented game-country associations, not sales, production locations or a complete setting census. One game can belong to several countries.",
-  "output_bytes_excluding_metadata": 543215
+  "output_bytes_excluding_metadata": 558162
 }

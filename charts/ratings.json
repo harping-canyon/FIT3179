@@ -27,7 +27,7 @@
     "x": {
       "field": "complexity",
       "type": "quantitative",
-      "title": "Community-rated complexity (1\u20135)",
+      "title": "Community-rated complexity (1–5)",
       "scale": {
         "domain": [
           1,
@@ -41,7 +41,7 @@
     "y": {
       "field": "rating",
       "type": "quantitative",
-      "title": "Average user rating (1\u201310)",
+      "title": "Average user rating (1–10)",
       "scale": {
         "domain": [
           4,
@@ -62,19 +62,24 @@
         "field": "complexity",
         "type": "quantitative",
         "format": ".2f",
-        "title": "Complexity (1\u20135)"
+        "title": "Complexity (1–5)"
       },
       {
         "field": "rating",
         "type": "quantitative",
         "format": ".2f",
-        "title": "User rating (1\u201310)"
+        "title": "User rating (1–10)"
       },
       {
         "field": "rating_votes",
         "type": "quantitative",
         "title": "Rating votes",
         "format": ","
+      },
+      {
+        "field": "award_label",
+        "type": "nominal",
+        "title": "Main award"
       }
     ]
   },
@@ -102,6 +107,14 @@
           "Twilight Struggle"
         ]
       }
+    },
+    {
+      "name": "showAwards",
+      "value": true,
+      "bind": {
+        "input": "checkbox",
+        "name": "Outline Spiel des Jahres winners (1979–2024): "
+      }
     }
   ],
   "layer": [
@@ -111,6 +124,20 @@
         "size": 20,
         "color": "#176c7a",
         "opacity": 0.28
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "showAwards && isValid(datum.award_year)"
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "filled": false,
+        "stroke": "#b65f26",
+        "strokeWidth": 2,
+        "size": 90
       }
     },
     {
@@ -225,5 +252,31 @@
         "tooltip": null
       }
     }
-  ]
+  ],
+  "transform": [
+    {
+      "lookup": "id",
+      "from": {
+        "data": {
+          "url": "./data/award_winners.json"
+        },
+        "key": "id",
+        "fields": [
+          "award_year"
+        ]
+      }
+    },
+    {
+      "calculate": "isValid(datum.award_year) ? 'Spiel des Jahres ' + datum.award_year : 'No main award in 1979–2024'",
+      "as": "award_label"
+    }
+  ],
+  "usermeta": {
+    "sources": [
+      "BoardGameGeek",
+      "Spiel des Jahres e.V."
+    ],
+    "join": "BGG game id to reviewed title matches in data/award_winners.json",
+    "awardScope": "Main award, 1979–2024; 14 winners in the 871-game cohort. Rings mark winners; all ratings and complexity values remain BGG measures."
+  }
 }

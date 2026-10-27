@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v6.json",
-  "description": "Player support hierarchy. All leaves are disjoint and sum to 871 games.",
+  "description": "Player support hierarchy for all 871 games or the 14 matched Spiel des Jahres main-award winners from 1979–2024. Each selected game appears once.",
   "width": 850,
   "height": 390,
   "padding": 0,
@@ -11,8 +11,12 @@
   "data": [
     {
       "name": "tree",
-      "url": "./data/player_tree.json",
+      "url": "./data/player_tree_awards.json",
       "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.scope == awardScope"
+        },
         {
           "type": "stratify",
           "key": "id",
@@ -84,7 +88,7 @@
             "signal": "datum.parent == 'solo' ? '#176c7a' : '#dce2dd'"
           },
           "tooltip": {
-            "signal": "{'Play mode': datum.parent == 'solo' ? 'Solo option' : 'Needs company', 'Maximum supported': datum.label, 'Games': datum.n, 'Share of all 871 games': format(datum.n/871, '.1%')}"
+            "signal": "{'Play mode': datum.parent == 'solo' ? 'Solo option' : 'Needs company', 'Maximum supported': datum.label, 'Games': datum.n, 'Share of selected games': format(datum.n/cohortTotal, '.1%'), 'Cohort': awardScope == 'all' ? 'All 871 story games' : '14 Spiel des Jahres winners (1979–2024)'}"
           },
           "stroke": {
             "value": "#fffefa"
@@ -118,7 +122,7 @@
             "signal": "(datum.y0+datum.y1)/2 + -11"
           },
           "text": {
-            "signal": "datum.n == 13 ? 'Solo only' : datum.label"
+            "signal": "datum.label"
           },
           "font": {
             "value": "Inter"
@@ -137,6 +141,12 @@
           },
           "fill": {
             "signal": "datum.parent == 'solo' ? '#fffefa' : '#243238'"
+          },
+          "opacity": {
+            "signal": "datum.x1-datum.x0 > 48 && datum.y1-datum.y0 > 44 ? 1 : 0"
+          },
+          "limit": {
+            "signal": "max(0, datum.x1-datum.x0-8)"
           }
         }
       }
@@ -175,6 +185,12 @@
           },
           "fill": {
             "signal": "datum.parent == 'solo' ? '#fffefa' : '#243238'"
+          },
+          "opacity": {
+            "signal": "datum.x1-datum.x0 > 48 && datum.y1-datum.y0 > 44 ? 1 : 0"
+          },
+          "limit": {
+            "signal": "max(0, datum.x1-datum.x0-8)"
           }
         }
       }
@@ -196,7 +212,7 @@
             "offset": 15
           },
           "text": {
-            "signal": "datum.label + ', ' + datum.total + ' games'"
+            "signal": "datum.x1-datum.x0 < 180 ? (datum.id == 'solo' ? 'Solo, ' : 'Company, ') + datum.total : datum.label + ', ' + datum.total + (datum.total == 1 ? ' game' : ' games')"
           },
           "font": {
             "value": "Inter"
@@ -209,9 +225,42 @@
           },
           "fill": {
             "value": "#243238"
+          },
+          "limit": {
+            "signal": "max(0, datum.x1-datum.x0-6)"
           }
         }
       }
     }
-  ]
+  ],
+  "signals": [
+    {
+      "name": "awardScope",
+      "value": "all",
+      "bind": {
+        "input": "select",
+        "name": "Show player counts for: ",
+        "options": [
+          "all",
+          "winners"
+        ],
+        "labels": [
+          "All 871 games",
+          "14 Spiel des Jahres winners"
+        ]
+      }
+    },
+    {
+      "name": "cohortTotal",
+      "update": "awardScope == 'all' ? 871 : 14"
+    }
+  ],
+  "usermeta": {
+    "sources": [
+      "BoardGameGeek",
+      "Spiel des Jahres e.V."
+    ],
+    "join": "Main-award records matched to BGG games before rebuilding the player-support hierarchy",
+    "awardScope": "1979–2024 main award only; 14 matches from 46 source winners. Denominators and parent totals change with the selected cohort."
+  }
 }
